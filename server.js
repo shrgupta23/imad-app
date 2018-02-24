@@ -1,5 +1,5 @@
-var express = require('express');
-var morgan = require('morgan');
+var express = require('express');//to import express library for server connections
+var morgan = require('morgan');// to import morgan library for printing log like connnected to port 8080
 var path = require('path');
 
 var app = express();
