@@ -5,19 +5,19 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 var articles={
-    articleone:{heading:"author! shourya gupta",
+    'articleone':{heading:"author! shourya gupta",
     date:"25 feb 2018",
     content:`
 <H1>Heading one added</H1>
 <p>paragraph one added<br>this pragraph do not contain any meaningfull information </p>
 <H2> heading without paragraph</h2>}`},
-    articletwo:{heading:"author! shourya gupta",
+    'articletwo':{heading:"author! shourya gupta",
     date:"25 feb 2018",
     content:`
 <H1>Heading one added</H1>
 <p>paragraph one added<br>this pragraph do not contain any meaningfull information </p>
 <H2> heading without paragraph</h2>`},
-    articlethree:{heading:"author! shourya gupta",
+    'articlethree':{heading:"author! shourya gupta",
     date:"25 feb 2018",
     content:`
 <H1>Heading one added</H1>
@@ -25,17 +25,7 @@ var articles={
 <H2> heading without paragraph</h2>`},
     
 };
-var articleone={
-    title:"article one",
-    heading:"author! shourya gupta",
-    date:"25 feb 2018",
-    content:`
-<H1>Heading one added</H1>
-<p>paragraph one added<br>this pragraph do not contain any meaningfull information </p>
-<H2> heading without paragraph</h2>
-`
-    
-};//` allows us to enter multiple line string in javascript
+//` allows us to enter multiple line string in javascript
 function createTemplate(data){
     var title=data.title;
     var date=data.date;
@@ -69,12 +59,14 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/articleone',function(req,res){
   res.send(createTemplate(articleone));
 });
-app.get('/articletwo',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'articletwo.html'));
+app.get('/:articleName',function(req,res){//feature of express framework
+
+//articleName==articleone
+//articles[articleName]={} content object for article one
+  var articleName=req.params.articleName;//functionalities provided by express framework
+  res.send(createTemplate(articles[articleName]));
 });
-app.get('/articlethree',function(req,res){
-  res.send('Article three Requested and will be served here');
-});
+
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
