@@ -4,7 +4,40 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var articleone={
+    title:"article one",
+    heading:"author! shourya gupta",
+    date:"25 feb 2018",
+    content:`
+<H1>Heading one added</H1>
+<p>paragraph one added<br>this pragraph do not contain any meaningfull information </p>
+<H2> heading without paragraph</h2>
+`
+    
+};//` allows us to enter multiple line string in javascript
+function createTemplate(data){
+    var title=data.title;
+    var date=data.date;
+    var content=data.content;
+var HtmlTemplate=`<html>
+<head>
+<title>${title}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link href="/ui/style.css" rel="stylesheet" />
+</head>
+<body>
+${date}
+<div class="container">
+ ${content}
+</div>
+<div>
+<p>hey we are not applying css here</p>
 
+</div>
+</body>
+</html>`;
+ return (HtmlTemplate);
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -13,7 +46,7 @@ app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 app.get('/articleone',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'articleone.html'));
+  res.send(createTemplate(articleone));
 });
 app.get('/articletwo',function(req,res){
   res.sendFile(path.join(__dirname, 'ui', 'articletwo.html'));
