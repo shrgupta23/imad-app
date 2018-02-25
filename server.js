@@ -4,6 +4,27 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var articles={
+    articleone:{heading:"author! shourya gupta",
+    date:"25 feb 2018",
+    content:`
+<H1>Heading one added</H1>
+<p>paragraph one added<br>this pragraph do not contain any meaningfull information </p>
+<H2> heading without paragraph</h2>}`},
+    articletwo:{heading:"author! shourya gupta",
+    date:"25 feb 2018",
+    content:`
+<H1>Heading one added</H1>
+<p>paragraph one added<br>this pragraph do not contain any meaningfull information </p>
+<H2> heading without paragraph</h2>`},
+    articlethree:{heading:"author! shourya gupta",
+    date:"25 feb 2018",
+    content:`
+<H1>Heading one added</H1>
+<p>paragraph one added<br>this pragraph do not contain any meaningfull information </p>
+<H2> heading without paragraph</h2>`},
+    
+};
 var articleone={
     title:"article one",
     heading:"author! shourya gupta",
