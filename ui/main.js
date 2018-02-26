@@ -1,8 +1,9 @@
 //counter code
 var Button=document.getElementById('counter');
 var counter=0;
-button.onClick(){
+Button.onClick(){
     //make a request to counter end point
+    var request=new XHttpRequest();
     
     //store it in variable
     
