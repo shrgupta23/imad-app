@@ -18,7 +18,8 @@ button.onclick= function(){
     }  //not done yet
       
   };
-  request.open('GET','',true);
+  request.open('GET','http://guptashourya7.imad.hasura-app.io/counter',true);
+  request.send(null);
   
   
 };
